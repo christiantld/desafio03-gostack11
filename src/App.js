@@ -39,7 +39,6 @@ export default function App() {
       <StatusBar barStyle="light-content" backgroundColor="#7159c1" />
       <SafeAreaView style={styles.container}>
         <FlatList
-          style={styles.repositoryContainer}
           data={repos}
           keyExtractor={(repos) => repos.id}
           renderItem={({ item: repos }) => (
@@ -58,7 +57,7 @@ export default function App() {
                   // Remember to replace "1" below with repository ID: {`repository-likes-${repository.id}`}
                   testID={`repository-likes-${repos.id}`}
                 >
-                  {repos.likes} curtida{repos.likes > 1 ? "s" : ""}
+                  {repos.likes} curtida{repos.likes === 1 ? "" : "s"}
                 </Text>
               </View>
 
@@ -86,8 +85,9 @@ const styles = StyleSheet.create({
   repositoryContainer: {
     marginBottom: 15,
     marginHorizontal: 15,
-    backgroundColor: "#fff",
+    backgroundColor: "#f1f1f1",
     padding: 20,
+    flex: 1,
   },
   repository: {
     fontSize: 32,
@@ -118,8 +118,11 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 10,
+    alignItems: "center",
   },
   buttonText: {
+    textAlign: "center",
+    width: "100%",
     fontSize: 14,
     fontWeight: "bold",
     marginRight: 10,
