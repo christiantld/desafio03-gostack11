@@ -29,11 +29,7 @@ export default function App() {
     const likedRepo = response.data;
 
     const reposUpdated = repos.map((repo) => {
-      if (repo.id === id) {
-        return likedRepo;
-      } else {
-        return repo;
-      }
+      return repo.id === id ? likedRepo : repo;
     });
     setRepos(reposUpdated);
   }
@@ -62,7 +58,7 @@ export default function App() {
                   // Remember to replace "1" below with repository ID: {`repository-likes-${repository.id}`}
                   testID={`repository-likes-${repos.id}`}
                 >
-                  {repos.likes} curtidas
+                  {repos.likes} curtida{repos.likes > 1 ? "s" : ""}
                 </Text>
               </View>
 
