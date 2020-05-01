@@ -17,8 +17,12 @@ export default function App() {
 
   useEffect(() => {
     async function loadRepos() {
-      const response = await api.get("/repositories");
-      setRepos(response.data);
+      try {
+        const response = await api.get("/repositories");
+        setRepos(response.data);
+      } catch (error) {
+        return repos;
+      }
     }
     loadRepos();
   }, []);
